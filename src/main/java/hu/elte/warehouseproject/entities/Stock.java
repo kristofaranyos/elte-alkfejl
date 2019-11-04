@@ -19,26 +19,15 @@ public class Stock {
     private Long id;
 
     @Column
-    private String name;
-
-    @Column
-    private String vendor;
-
-    @Column
     private Long quantity;
 
-    /*@JsonIgnore
-    @OneToMany(targetEntity = Issue.class, mappedBy = "createdBy")
-    private List<Issue> createdIssue;
+    @ManyToOne()
+    @JoinColumn(name = "warehouse_id")
+    private Warehouse warehouse;
 
-    @JsonIgnore
-    @OneToMany(targetEntity = Issue.class, mappedBy = "updatedBy")
-    private List<Issue> updatedIssue;
-
-    @JsonIgnore
-    @OneToMany(targetEntity = Message.class, mappedBy = "createdBy")
-    private List<Message> createdMessage;*/
-
+    @ManyToOne()
+    @JoinColumn(name = "item_id")
+    private Item item;
 }
 
 

@@ -2,9 +2,12 @@ package hu.elte.warehouseproject.entities;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Table(name = "warehouse")
@@ -25,17 +28,8 @@ public class Warehouse {
     @Column
     private String contactDetails;
 
-    /*@JsonIgnore
-    @OneToMany(targetEntity = Issue.class, mappedBy = "createdBy")
-    private List<Issue> createdIssue;
-
-    @JsonIgnore
-    @OneToMany(targetEntity = Issue.class, mappedBy = "updatedBy")
-    private List<Issue> updatedIssue;
-
-    @JsonIgnore
-    @OneToMany(targetEntity = Message.class, mappedBy = "createdBy")
-    private List<Message> createdMessage;*/
+    @OneToMany(targetEntity = Stock.class, mappedBy = "warehouse")
+    private List<Stock> stock;
 }
 
 

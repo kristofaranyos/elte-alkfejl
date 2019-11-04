@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "item")
 @Data
@@ -28,6 +30,9 @@ public class Item {
     @ManyToOne()
     @JoinColumn(name = "vendor_id")
     private Vendor vendor;
+
+    @OneToMany(targetEntity = Stock.class, mappedBy = "item")
+    private List<Stock> stock;
 }
 
 
