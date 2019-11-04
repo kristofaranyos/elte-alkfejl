@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -12,7 +11,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 public class Warehouse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +21,9 @@ public class Warehouse {
 
     @Column
     private String address;
+
+    @Column
+    private String contactDetails;
 
     /*@JsonIgnore
     @OneToMany(targetEntity = Issue.class, mappedBy = "createdBy")
@@ -35,7 +36,6 @@ public class Warehouse {
     @JsonIgnore
     @OneToMany(targetEntity = Message.class, mappedBy = "createdBy")
     private List<Message> createdMessage;*/
-
 }
 
 

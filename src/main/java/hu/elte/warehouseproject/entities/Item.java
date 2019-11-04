@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -12,7 +11,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,13 +20,15 @@ public class Item {
     private String name;
 
     @Column
-    private String vendor;
-
-    @Column
     private Long bprice;
 
     @Column
     private Long sprice;
+
+    @ManyToOne()
+    @JoinColumn(name = "vendor_id")
+    private Vendor vendor;
+
 
     /*@JsonIgnore
     @OneToMany(targetEntity = Issue.class, mappedBy = "createdBy")

@@ -2,13 +2,16 @@ package hu.elte.warehouseproject.entities;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
-@Table(name = "vendor")
+@Table(name = "łvendor")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,13 +25,21 @@ public class Vendor {
     private String name;
 
     @Column
-    private String vendor;
-
-    @Column
     private String address;
 
     @Column
     private String contact;
+
+/*
+    @JsonIgnore
+    @OneToMany(mappedBy = "vendor")
+    private List<Item> items;
+*/
+    @JsonIgnore
+    @OneToMany(mappedBy = "vendor")
+    private List<Item> message;
+
+
 
     /*@JsonIgnore
     @OneToMany(targetEntity = Issue.class, mappedBy = "createdBy")
