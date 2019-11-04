@@ -1,12 +1,14 @@
 package hu.elte.warehouseproject.controllers;
 
 import hu.elte.warehouseproject.entities.Item;
+import hu.elte.warehouseproject.entities.ItemDetails;
 import hu.elte.warehouseproject.repositories.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Optional;
 
 @RestController
@@ -17,7 +19,11 @@ public class ItemController {
 
     @GetMapping("/{id}")
     public ResponseEntity getOne(@PathVariable Long id) {
-        return new ResponseEntity(itemRepository.findById(id), HttpStatus.OK);
+        HashMap<String, String> details = new HashMap<>();
+        details.put("asd", "test12");
+        details.put("asd2", "test69");
+
+        return new ResponseEntity(new ItemDetails<HashMap<String, String>>(itemRepository.findById(id).get(), details), HttpStatus.OK);
     }
 
     @GetMapping("")
