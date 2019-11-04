@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("warehouse")
+@RequestMapping("/warehouse")
 public class WarehouseController {
     @Autowired
     private WarehouseRepository warehouseRepository;
