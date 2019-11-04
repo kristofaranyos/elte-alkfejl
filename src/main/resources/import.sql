@@ -1,11 +1,10 @@
-INSERT INTO item (name, bprice, sprice) VALUES ('test1', 1, 2);
-INSERT INTO item (name, bprice, sprice) VALUES ('test2', 3, 4);
-INSERT INTO item (name, bprice, sprice) VALUES ('test3', 5, 6);
-INSERT INTO item (name, bprice, sprice) VALUES ('test4', 7, 8);
-INSERT INTO item (name, bprice, sprice) VALUES ('test5', 9, 10);
-
 INSERT INTO vendor (name, address, contact) VALUES ('asd', 'asd', 'asd');
 
+INSERT INTO item (name, bprice, sprice, vendor_id) VALUES ('test1', 1, 2, 1);
+INSERT INTO item (name, bprice, sprice, vendor_id) VALUES ('test2', 3, 4, 1);
+INSERT INTO item (name, bprice, sprice, vendor_id) VALUES ('test3', 5, 6, 1);
+INSERT INTO item (name, bprice, sprice, vendor_id) VALUES ('test4', 7, 8, 1);
+INSERT INTO item (name, bprice, sprice, vendor_id) VALUES ('test5', 9, 10, 1);
 
 INSERT INTO warehouse (name,address,contact_details) VALUES ('Sed Eu LLP','Ap #917-8680 Leo. St.','Suspendisse@Fuscediam.ca'),('Vivamus Rhoncus Industries','P.O. Box 121, 5586 Dignissim Ave','Sed.dictum.Proin@felisNulla.com'),('Sodales Nisi Magna Foundation','3140 Natoque St.','orci.Ut@Sed.edu'),('Libero Industries','7324 Semper St.','at.sem.molestie@enimdiamvel.co.uk'),('Est Associates','292-8575 Vivamus St.','lacinia.Sed.congue@ami.net'),('Vitae Semper Egestas Company','555-6066 Euismod Road','pede.et@nullavulputatedui.edu'),('Condimentum Eget Volutpat PC','P.O. Box 983, 1481 Elementum Rd.','arcu.eu.odio@neque.edu'),('Nec LLC','826-6080 Interdum Rd.','in.felis.Nulla@molestie.co.uk'),('Scelerisque Neque Sed LLP','493-1002 Enim. Avenue','nec.metus.facilisis@Lorem.ca'),('Aliquam Auctor Velit LLC','4655 Dapibus Avenue','Sed@velit.edu');
 INSERT INTO warehouse (name,address,contact_details) VALUES ('Libero Lacus LLC','7821 Pellentesque St.','et.commodo@consequatauctor.ca'),('Nascetur Ridiculus Incorporated','Ap #710-6809 Luctus, Street','tempus@vitae.com'),('Libero Proin Ltd','288-9915 Vitae St.','faucibus@inceptos.com'),('Dictum Sapien Company','Ap #839-3323 Eleifend, Ave','semper@et.edu'),('Enim Mi Incorporated','Ap #967-3614 Faucibus Road','Donec@dui.ca'),('Lobortis Inc.','Ap #112-6601 Quisque Ave','Donec.egestas.Duis@dolorDonec.org'),('Risus Associates','P.O. Box 774, 9718 Sed Rd.','arcu.eu@maurisrhoncus.org'),('Euismod Ac Fermentum Inc.','P.O. Box 795, 1310 Mauris Avenue','consectetuer.adipiscing.elit@Sed.net'),('Malesuada Augue Foundation','9338 Enim. Road','at.egestas@turpisAliquamadipiscing.net'),('Ut Erat Sed PC','P.O. Box 342, 6377 Massa Avenue','imperdiet.dictum@massa.co.uk');

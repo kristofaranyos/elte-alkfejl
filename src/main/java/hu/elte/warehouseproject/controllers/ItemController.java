@@ -1,14 +1,12 @@
 package hu.elte.warehouseproject.controllers;
 
 import hu.elte.warehouseproject.entities.Item;
-import hu.elte.warehouseproject.entities.ItemDetails;
 import hu.elte.warehouseproject.repositories.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.Optional;
 
 @RestController
@@ -19,11 +17,7 @@ public class ItemController {
 
     @GetMapping("/{id}")
     public ResponseEntity getOne(@PathVariable Long id) {
-        HashMap<String, String> details = new HashMap<>();
-        details.put("asd", "test12");
-        details.put("asd2", "test69");
-
-        return new ResponseEntity(new ItemDetails<HashMap<String, String>>(itemRepository.findById(id).get(), details), HttpStatus.OK);
+        return new ResponseEntity(itemRepository.findById(id), HttpStatus.OK);
     }
 
     @GetMapping("")
@@ -37,21 +31,21 @@ public class ItemController {
         return new ResponseEntity(itemRepository.findById(item.getId()), HttpStatus.OK);
     }
 
-    @PutMapping("")
-    public ResponseEntity update(@RequestBody Item item) {
-        Optional<Item> baseEntity = itemRepository.findById(item.getId());
+    @PutMapping("/{id}")
+    public ResponseEntity update(@PathVariable Long id, @RequestBody Item item) {
+        Optional<Item> baseEntity = itemRepository.findById(id);
 
         if (baseEntity.isPresent()) {
             itemRepository.save(item);
-            return new ResponseEntity(itemRepository.findById(item.getId()), HttpStatus.OK);
+            return new ResponseEntity(itemRepository.findById(id), HttpStatus.OK);
         }
 
         return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("")
-    public ResponseEntity delete(@RequestBody Item item) {
-        Optional<Item> baseEntity = itemRepository.findById(item.getId());
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable Long id, @RequestBody Item item) {
+        Optional<Item> baseEntity = itemRepository.findById(id);
 
         if (baseEntity.isPresent()) {
             itemRepository.delete(item);

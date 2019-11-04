@@ -31,21 +31,21 @@ public class WarehouseController {
         return new ResponseEntity(warehouseRepository.findById(warehouse.getId()), HttpStatus.OK);
     }
 
-    @PutMapping("")
-    public ResponseEntity update(@RequestBody Warehouse warehouse) {
-        Optional<Warehouse> baseEntity = warehouseRepository.findById(warehouse.getId());
+    @PutMapping("/{id}")
+    public ResponseEntity update(@PathVariable Long id, @RequestBody Warehouse warehouse) {
+        Optional<Warehouse> baseEntity = warehouseRepository.findById(id);
 
         if (baseEntity.isPresent()) {
             warehouseRepository.save(warehouse);
-            return new ResponseEntity(warehouseRepository.findById(warehouse.getId()), HttpStatus.OK);
+            return new ResponseEntity(warehouseRepository.findById(id), HttpStatus.OK);
         }
 
         return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("")
-    public ResponseEntity delete(@RequestBody Warehouse warehouse) {
-        Optional<Warehouse> baseEntity = warehouseRepository.findById(warehouse.getId());
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable Long id, @RequestBody Warehouse warehouse) {
+        Optional<Warehouse> baseEntity = warehouseRepository.findById(id);
 
         if (baseEntity.isPresent()) {
             warehouseRepository.delete(warehouse);

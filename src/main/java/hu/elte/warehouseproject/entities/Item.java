@@ -28,20 +28,6 @@ public class Item {
     @ManyToOne()
     @JoinColumn(name = "vendor_id")
     private Vendor vendor;
-
-
-    /*@JsonIgnore
-    @OneToMany(targetEntity = Issue.class, mappedBy = "createdBy")
-    private List<Issue> createdIssue;
-
-    @JsonIgnore
-    @OneToMany(targetEntity = Issue.class, mappedBy = "updatedBy")
-    private List<Issue> updatedIssue;
-
-    @JsonIgnore
-    @OneToMany(targetEntity = Message.class, mappedBy = "createdBy")
-    private List<Message> createdMessage;*/
-
 }
 
 
