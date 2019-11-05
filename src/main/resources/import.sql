@@ -13,3 +13,5 @@ INSERT INTO item (name,bprice,sprice,vendor_id) VALUES ('ipsum dolor sit',4,20,3
 INSERT INTO stock (quantity,item_id,warehouse_id) VALUES (12,2,23),(4,2,9),(14,3,22),(1,25,28),(2,28,28),(4,2,18),(12,24,5),(3,3,27),(5,22,10),(4,4,14);
 INSERT INTO stock (quantity,item_id,warehouse_id) VALUES (7,13,24),(8,28,8),(5,25,17),(6,20,30),(3,9,22),(4,18,10),(1,29,19),(11,8,1),(12,4,26),(6,14,23);
 INSERT INTO stock (quantity,item_id,warehouse_id) VALUES (1,12,24),(3,22,19),(2,12,15),(14,13,6),(4,13,28),(8,27,13),(14,6,19),(3,6,11),(13,27,10),(2,18,19);
+
+INSERT INTO user (username,password,email,role) VALUES ('lali', '$2a$10$tisW9ZjRZD49Z4bYCUEd4.C5p0Jvj.0pwGxnv.pfiATAbXAIO3SGS', 'lali@ceg.hu', 'USER'),('ati', '123456789', 'ati@ceg.hu', 'USER'),('kriszti', 'kriszti19940412', 'kriszti@ceg.hu', 'USER'),('robert"); DROP TABLE Items; --', 'test12Fz432sy', 'hacker@vagyok.hu', 'USER');
