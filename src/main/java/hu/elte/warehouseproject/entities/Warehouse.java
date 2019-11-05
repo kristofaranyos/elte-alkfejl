@@ -2,6 +2,7 @@ package hu.elte.warehouseproject.entities;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,7 @@ public class Warehouse {
     private String contactDetails;
 
     @OneToMany(targetEntity = Stock.class, mappedBy = "warehouse")
+    @JsonIgnore
     private List<Stock> stock;
 }
 

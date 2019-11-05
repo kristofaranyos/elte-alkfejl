@@ -2,6 +2,7 @@ package hu.elte.warehouseproject.entities;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,7 @@ public class Item {
     private Vendor vendor;
 
     @OneToMany(targetEntity = Stock.class, mappedBy = "item")
+    @JsonIgnore
     private List<Stock> stock;
 }
 

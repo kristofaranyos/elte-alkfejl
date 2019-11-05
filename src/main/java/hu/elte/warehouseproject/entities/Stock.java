@@ -24,12 +24,10 @@ public class Stock {
 
     @ManyToOne()
     @JoinColumn(name = "warehouse_id")
-    @JsonIgnore
     private Warehouse warehouse;
 
     @ManyToOne()
     @JoinColumn(name = "item_id")
-    @JsonIgnore
     private Item item;
 }
 
