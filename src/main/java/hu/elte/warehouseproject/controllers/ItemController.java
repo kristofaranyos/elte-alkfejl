@@ -17,7 +17,13 @@ public class ItemController {
 
     @GetMapping("/{id}")
     public ResponseEntity getOne(@PathVariable Long id) {
-        return new ResponseEntity(itemRepository.findById(id), HttpStatus.OK);
+        Optional<Item> item = itemRepository.findById(id);
+
+        if (!item.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(item.get());
     }
 
     @GetMapping("")
@@ -27,28 +33,27 @@ public class ItemController {
 
     @PostMapping("")
     public ResponseEntity create(@RequestBody Item item) {
-        itemRepository.save(item);
-        return new ResponseEntity(itemRepository.findById(item.getId()), HttpStatus.OK);
+        return ResponseEntity.ok(itemRepository.save(item));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity update(@PathVariable Long id, @RequestBody Item item) {
-        Optional<Item> baseEntity = itemRepository.findById(id);
+        Optional<Item> baseItem = itemRepository.findById(id);
 
-        if (baseEntity.isPresent()) {
-            itemRepository.save(item);
-            return new ResponseEntity(itemRepository.findById(id), HttpStatus.OK);
+        if (baseItem.isPresent()) {
+            item.setId(id);
+            return ResponseEntity.ok(itemRepository.save(item));
         }
 
         return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable Long id, @RequestBody Item item) {
-        Optional<Item> baseEntity = itemRepository.findById(id);
+    public ResponseEntity delete(@PathVariable Long id) {
+        Optional<Item> baseItem = itemRepository.findById(id);
 
-        if (baseEntity.isPresent()) {
-            itemRepository.delete(item);
+        if (baseItem.isPresent()) {
+            itemRepository.deleteById(id);
             return ResponseEntity.ok().build();
         }
 

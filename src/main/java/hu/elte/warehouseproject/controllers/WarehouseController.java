@@ -17,7 +17,13 @@ public class WarehouseController {
 
     @GetMapping("/{id}")
     public ResponseEntity getOne(@PathVariable Long id) {
-        return new ResponseEntity(warehouseRepository.findById(id), HttpStatus.OK);
+        Optional<Warehouse> warehouse = warehouseRepository.findById(id);
+
+        if (!warehouse.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(warehouse.get());
     }
 
     @GetMapping("")
@@ -27,28 +33,27 @@ public class WarehouseController {
 
     @PostMapping("")
     public ResponseEntity create(@RequestBody Warehouse warehouse) {
-        warehouseRepository.save(warehouse);
-        return new ResponseEntity(warehouseRepository.findById(warehouse.getId()), HttpStatus.OK);
+        return ResponseEntity.ok(warehouseRepository.save(warehouse));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity update(@PathVariable Long id, @RequestBody Warehouse warehouse) {
-        Optional<Warehouse> baseEntity = warehouseRepository.findById(id);
+        Optional<Warehouse> baseWarehouse = warehouseRepository.findById(id);
 
-        if (baseEntity.isPresent()) {
-            warehouseRepository.save(warehouse);
-            return new ResponseEntity(warehouseRepository.findById(id), HttpStatus.OK);
+        if (baseWarehouse.isPresent()) {
+            warehouse.setId(id);
+            return ResponseEntity.ok(warehouseRepository.save(warehouse));
         }
 
         return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable Long id, @RequestBody Warehouse warehouse) {
-        Optional<Warehouse> baseEntity = warehouseRepository.findById(id);
+    public ResponseEntity delete(@PathVariable Long id) {
+        Optional<Warehouse> baseWarehouse = warehouseRepository.findById(id);
 
-        if (baseEntity.isPresent()) {
-            warehouseRepository.delete(warehouse);
+        if (baseWarehouse.isPresent()) {
+            warehouseRepository.deleteById(id);
             return ResponseEntity.ok().build();
         }
 

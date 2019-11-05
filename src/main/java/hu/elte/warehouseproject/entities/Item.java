@@ -18,13 +18,13 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private String name;
 
-    @Column
+    @Column(nullable = false)
     private Long bprice;
 
-    @Column
+    @Column(nullable = false)
     private Long sprice;
 
     @ManyToOne()

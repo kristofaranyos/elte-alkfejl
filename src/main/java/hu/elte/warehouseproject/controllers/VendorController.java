@@ -21,7 +21,13 @@ public class VendorController {
 
     @GetMapping("/{id}")
     public ResponseEntity getOne(@PathVariable Long id) {
-        return new ResponseEntity(vendorRepository.findById(id), HttpStatus.OK);
+        Optional<Vendor> vendor = vendorRepository.findById(id);
+
+        if (!vendor.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(vendor.get());
     }
 
     @GetMapping("")
@@ -31,28 +37,27 @@ public class VendorController {
 
     @PostMapping("")
     public ResponseEntity create(@RequestBody Vendor vendor) {
-        vendorRepository.save(vendor);
-        return new ResponseEntity(vendorRepository.findById(vendor.getId()), HttpStatus.OK);
+        return ResponseEntity.ok(vendorRepository.save(vendor));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity update(@PathVariable Long id, @RequestBody Vendor vendor) {
-        Optional<Vendor> baseEntity = vendorRepository.findById(id);
+        Optional<Vendor> baseVendor = vendorRepository.findById(id);
 
-        if (baseEntity.isPresent()) {
-            vendorRepository.save(vendor);
-            return new ResponseEntity(vendorRepository.findById(id), HttpStatus.OK);
+        if (baseVendor.isPresent()) {
+            vendor.setId(id);
+            return ResponseEntity.ok(vendorRepository.save(vendor));
         }
 
         return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable Long id, @RequestBody Vendor vendor) {
-        Optional<Vendor> baseEntity = vendorRepository.findById(id);
+    public ResponseEntity delete(@PathVariable Long id) {
+        Optional<Vendor> baseVendor = vendorRepository.findById(id);
 
-        if (baseEntity.isPresent()) {
-            vendorRepository.delete(vendor);
+        if (baseVendor.isPresent()) {
+            vendorRepository.deleteById(id);
             return ResponseEntity.ok().build();
         }
 
