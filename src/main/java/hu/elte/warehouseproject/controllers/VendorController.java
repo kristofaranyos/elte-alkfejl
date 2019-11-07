@@ -38,6 +38,17 @@ public class VendorController {
         return ResponseEntity.ok(items);
     }
 
+    @GetMapping("/getitems/{id}")
+    public ResponseEntity getAllByItemId(@PathVariable Long id) {
+        Optional<Vendor> vendor = vendorRepository.findById(id);
+
+        if (!vendor.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(vendor.get().getItems());
+    }
+
     @GetMapping("")
     public ResponseEntity getAll() {
         return new ResponseEntity(vendorRepository.findAll(), HttpStatus.OK);
