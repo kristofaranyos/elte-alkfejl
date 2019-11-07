@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/h2/**", "/users/register").permitAll()   // important!
+                .antMatchers("/h2/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic()
@@ -40,7 +40,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     protected void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-        System.out.println(passwordEncoder().encode("password"));
         auth
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
