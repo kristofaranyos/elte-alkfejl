@@ -1,14 +1,15 @@
 package hu.elte.warehouseproject.controllers;
 
+import hu.elte.warehouseproject.entities.Item;
+import hu.elte.warehouseproject.entities.Stock;
 import hu.elte.warehouseproject.entities.Warehouse;
-import hu.elte.warehouseproject.repositories.ItemRepository;
-import hu.elte.warehouseproject.repositories.StockRepository;
 import hu.elte.warehouseproject.repositories.WarehouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
@@ -16,12 +17,6 @@ import java.util.Optional;
 public class WarehouseController {
     @Autowired
     private WarehouseRepository warehouseRepository;
-
-    @Autowired
-    private ItemRepository itemRepository;
-
-    @Autowired
-    private StockRepository stockRepository;
 
     @GetMapping("/{id}")
     public ResponseEntity getOne(@PathVariable Long id) {
@@ -32,6 +27,25 @@ public class WarehouseController {
         }
 
         return ResponseEntity.ok(warehouse.get());
+    }
+
+    @GetMapping("/getitems/{id}")
+    public ResponseEntity getAllByWarehouseId(@PathVariable Long id) {
+        Optional<Warehouse> warehouse = warehouseRepository.findById(id);
+
+        if (!warehouse.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        ArrayList<Item> items = new ArrayList<>();
+
+        for (Stock s : warehouse.get().getStock()) {
+            if (!items.contains(s.getItem())) {
+                items.add(s.getItem());
+            }
+        }
+
+        return ResponseEntity.ok(items);
     }
 
     @GetMapping("")

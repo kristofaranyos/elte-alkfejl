@@ -1,13 +1,13 @@
 package hu.elte.warehouseproject.controllers;
 
 import hu.elte.warehouseproject.entities.Vendor;
-import hu.elte.warehouseproject.repositories.ItemRepository;
 import hu.elte.warehouseproject.repositories.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
@@ -15,9 +15,6 @@ import java.util.Optional;
 public class VendorController {
     @Autowired
     private VendorRepository vendorRepository;
-
-    @Autowired
-    private ItemRepository itemRepository;
 
     @GetMapping("/{id}")
     public ResponseEntity getOne(@PathVariable Long id) {
@@ -28,6 +25,17 @@ public class VendorController {
         }
 
         return ResponseEntity.ok(vendor.get());
+    }
+
+    @GetMapping("/search/{term}")
+    public ResponseEntity searchByName(@PathVariable String term) {
+        ArrayList<Vendor> items = (ArrayList<Vendor>)vendorRepository.findByNameContaining(term);
+
+        if (items.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(items);
     }
 
     @GetMapping("")
