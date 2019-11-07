@@ -1,6 +1,8 @@
 package hu.elte.warehouseproject.controllers;
 
 import hu.elte.warehouseproject.entities.Warehouse;
+import hu.elte.warehouseproject.repositories.ItemRepository;
+import hu.elte.warehouseproject.repositories.StockRepository;
 import hu.elte.warehouseproject.repositories.WarehouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,12 @@ import java.util.Optional;
 public class WarehouseController {
     @Autowired
     private WarehouseRepository warehouseRepository;
+
+    @Autowired
+    private ItemRepository itemRepository;
+
+    @Autowired
+    private StockRepository stockRepository;
 
     @GetMapping("/{id}")
     public ResponseEntity getOne(@PathVariable Long id) {

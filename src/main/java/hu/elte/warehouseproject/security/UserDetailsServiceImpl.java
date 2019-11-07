@@ -1,6 +1,5 @@
 package hu.elte.warehouseproject.security;
 
-import hu.elte.warehouseproject.entities.Role;
 import hu.elte.warehouseproject.entities.User;
 import hu.elte.warehouseproject.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
