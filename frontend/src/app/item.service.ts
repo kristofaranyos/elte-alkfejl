@@ -20,7 +20,7 @@ export class ItemService {
 	constructor(private http: HttpClient) { }
 
 	getItem(id: number): Promise<Item> {
-	  return this.http.get<Item>(`${this.itemUrl}/${id}`).toPromise();
+	  return this.http.get<Item>(`${this.itemUrl}/${id}`, httpOptions).toPromise();
 	}
 
 	getItems(): Promise<Item[]> {
@@ -29,6 +29,10 @@ export class ItemService {
 
 	removeItem(itemid: Number): Promise<Boolean> {
 	  return this.http.delete<Boolean>(`${this.itemUrl}/${itemid}`, httpOptions).toPromise();
+	}
+
+	putItem(item: Item, id: Number) : Promise<Boolean> {
+		return this.http.put<Item>(`${this.itemUrl}/${id}`, item, httpOptions).toPromise();
 	}
 
 }

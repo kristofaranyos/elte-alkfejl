@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +19,8 @@ import { VendorComponent } from './vendor/vendor.component';
 import { UserComponent } from './user/user.component';
 
 import { HttpClientModule } from "@angular/common/http";
+import { AddItemComponent } from './add-item/add-item.component';
+import { EditItemComponent } from './edit-item/edit-item.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +30,9 @@ import { HttpClientModule } from "@angular/common/http";
         WarehouseComponent,
         IndexComponent,
         VendorComponent,
-        UserComponent
+        UserComponent,
+        AddItemComponent,
+        EditItemComponent
     ],
     imports: [
         BrowserModule,
@@ -38,7 +44,10 @@ import { HttpClientModule } from "@angular/common/http";
         MatTableModule,
         MatGridListModule,
         MatFormFieldModule,
-        HttpClientModule
+        MatInputModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

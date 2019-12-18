@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IndexComponent } from './index/index.component';
 import { StockComponent } from './stock/stock.component';
 import { ItemComponent } from './item/item.component';
+import { AddItemComponent } from './add-item/add-item.component';
+import { EditItemComponent } from './edit-item/edit-item.component';
 import { WarehouseComponent } from './warehouse/warehouse.component';
 import { VendorComponent } from './vendor/vendor.component';
 import { UserComponent } from './user/user.component';
@@ -21,6 +23,14 @@ const routes: Routes = [
 	{
    		path: 'item',
     	component: ItemComponent
+	},
+	{
+    	path: 'additem',
+		component: AddItemComponent
+	},
+	{
+    	path: 'edititem/:id',
+		component: EditItemComponent
 	},
 	{
     	path: 'warehouse',

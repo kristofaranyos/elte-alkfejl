@@ -9,7 +9,7 @@ import { Item } from '../item';
 })
 export class ItemComponent implements OnInit {
 	items: Item[];
-	displayedColumns = ['id', 'name', 'sprice', 'bprice', 'vendor', 'edit', 'remove'];
+	displayedColumns = ['id', 'name', 'bprice', 'sprice', 'vendor', 'edit', 'remove'];
 
   constructor(private itemService: ItemService) { }
 
