@@ -13,6 +13,8 @@ import { IndexComponent } from './index/index.component';
 import { VendorComponent } from './vendor/vendor.component';
 import { UserComponent } from './user/user.component';
 
+import { HttpClientModule } from "@angular/common/http";
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -29,7 +31,8 @@ import { UserComponent } from './user/user.component';
         NoopAnimationsModule,
         MatToolbarModule,
         MatIconModule,
-        MatButtonModule
+        MatButtonModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]
