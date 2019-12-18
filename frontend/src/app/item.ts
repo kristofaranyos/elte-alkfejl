@@ -3,5 +3,5 @@ export class Item {
     name = ''
     bprice = null
     sprice = null
-    vendor_id = null
+    vendor = null
 }

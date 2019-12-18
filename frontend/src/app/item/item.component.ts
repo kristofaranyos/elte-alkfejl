@@ -9,11 +9,17 @@ import { Item } from '../item';
 })
 export class ItemComponent implements OnInit {
 	items: Item[];
+	displayedColumns = ['id', 'name', 'sprice', 'bprice', 'vendor', 'edit', 'remove'];
 
   constructor(private itemService: ItemService) { }
 
     async ngOnInit() {
         this.items = await this.itemService.getItems();
         console.log(this.items);
+    }
+
+    async remove(itemid: Number) {
+    	await this.itemService.removeItem(itemid);
+    	this.items = await this.itemService.getItems();
     }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Item } from './item';
+import {MatTableModule} from '@angular/material/table';
 
 const httpOptions = {
   headers: new HttpHeaders({ 
@@ -24,6 +25,10 @@ export class ItemService {
 
 	getItems(): Promise<Item[]> {
 	  return this.http.get<Item[]>(`${this.itemUrl}`, httpOptions).toPromise();
+	}
+
+	removeItem(itemid: Number): Promise<Boolean> {
+	  return this.http.delete<Boolean>(`${this.itemUrl}/${itemid}`, httpOptions).toPromise();
 	}
 
 }
