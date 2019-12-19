@@ -32,3 +32,10 @@ span {
 #d {
 	color: blue;
 }
+
+#asd {
+	max-width: 766px;
+	text-align: justify;
+	display: block;
+	margin: 0 auto;
+}
