@@ -21,6 +21,12 @@ import { UserComponent } from './user/user.component';
 import { HttpClientModule } from "@angular/common/http";
 import { AddItemComponent } from './add-item/add-item.component';
 import { EditItemComponent } from './edit-item/edit-item.component';
+import { AddVendorComponent } from './add-vendor/add-vendor.component';
+import { EditVendorComponent } from './edit-vendor/edit-vendor.component';
+import { AddWarehouseComponent } from './add-warehouse/add-warehouse.component';
+import { EditWarehouseComponent } from './edit-warehouse/edit-warehouse.component';
+import { AddStockComponent } from './add-stock/add-stock.component';
+import { EditStockComponent } from './edit-stock/edit-stock.component';
 
 @NgModule({
     declarations: [
@@ -32,7 +38,13 @@ import { EditItemComponent } from './edit-item/edit-item.component';
         VendorComponent,
         UserComponent,
         AddItemComponent,
-        EditItemComponent
+        EditItemComponent,
+        AddVendorComponent,
+        EditVendorComponent,
+        AddWarehouseComponent,
+        EditWarehouseComponent,
+        AddStockComponent,
+        EditStockComponent
     ],
     imports: [
         BrowserModule,

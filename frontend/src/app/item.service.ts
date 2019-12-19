@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Item } from './item';
 import {MatTableModule} from '@angular/material/table';
+import { Vendor } from './vendor';
 
 const httpOptions = {
   headers: new HttpHeaders({ 
@@ -16,6 +17,7 @@ const httpOptions = {
 
 export class ItemService {
 	private itemUrl = 'http://localhost:8080/item';
+	private vendorUrl = 'http://localhost:8080/vendor';
 
 	constructor(private http: HttpClient) { }
 
@@ -31,8 +33,16 @@ export class ItemService {
 	  return this.http.delete<Boolean>(`${this.itemUrl}/${itemid}`, httpOptions).toPromise();
 	}
 
-	putItem(item: Item, id: Number) : Promise<Boolean> {
+	putItem(item: Item, id: Number) : Promise<Item> {
 		return this.http.put<Item>(`${this.itemUrl}/${id}`, item, httpOptions).toPromise();
+	}
+
+	addItem(item: Item) : Promise<Item> {
+		return this.http.post<Item>(`${this.itemUrl}`, item, httpOptions).toPromise();
+	}
+
+	getVendor(id: Number) : Promise<Vendor> {
+		return this.http.get<Vendor>(`${this.vendorUrl}/${id}`, httpOptions).toPromise();
 	}
 
 }

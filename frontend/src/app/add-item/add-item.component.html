@@ -1,1 +1,25 @@
-asd
+<h1>Ad item</h1>
+
+<form class="form" [formGroup]="form">
+  <mat-form-field class="example-full-width">
+	<span>Name:</span>
+    <input formControlName="name" matInput>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+  	<span>Buy price:</span>
+    <input formControlName="bprice" matInput>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+  	<span>Sell price:</span>
+    <input formControlName="sprice" matInput>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+  	<span>Vendor id:</span>
+    <input formControlName="vendor" matInput>
+  </mat-form-field>
+</form>
+
+<button mat-button (click)="send()">Send</button>
