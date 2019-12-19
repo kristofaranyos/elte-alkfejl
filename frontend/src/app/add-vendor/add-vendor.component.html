@@ -1,1 +1,20 @@
-<p>add-vendor works!</p>
+<h1>Add vendor</h1>
+
+<form class="form" [formGroup]="form">
+  <mat-form-field class="example-full-width">
+	<span>Name:</span>
+    <input formControlName="name" matInput>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+  	<span>Address:</span>
+    <input formControlName="address" matInput>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+  	<span>Contact:</span>
+    <input formControlName="contactDetails" matInput>
+  </mat-form-field>
+</form>
+
+<button mat-button (click)="send()">Send</button>
