@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { StockService } from '../stock.service';
 import { Stock } from '../stock';
-import { Item } from './item';
-import { Warehouse } from './warehouse';
+import { Item } from '../item';
+import { Warehouse } from '../warehouse';
 
 @Component({
   selector: 'app-add-stock',
